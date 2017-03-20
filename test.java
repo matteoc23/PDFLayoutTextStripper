@@ -11,16 +11,19 @@ public class test {
     public static void main(String[] args) {
         String string = null;
         try {
-            PDFParser pdfParser = new PDFParser(new FileInputStream("sample.pdf"));
-            pdfParser.parse();
-            PDDocument pdDocument = new PDDocument(pdfParser.getDocument());
-            PDFTextStripper pdfTextStripper = new PDFLayoutTextStripper();
-            string = pdfTextStripper.getText(pdDocument);
+        	try (FileInputStream input = new FileInputStream("samples/bus.pdf")){
+	        	PDFParser pdfParser = new PDFParser(input);
+	            pdfParser.parse(); 
+	            try (PDDocument pdDocument = new PDDocument(pdfParser.getDocument())){
+	            	 PDFTextStripper pdfTextStripper = new PDFLayoutTextStripper();
+	            	 string = pdfTextStripper.getText(pdDocument);
+	            }
+            } 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-        };
+        }
         System.out.println(string);
     }
 

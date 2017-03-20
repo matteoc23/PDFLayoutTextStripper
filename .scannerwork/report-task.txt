@@ -1,0 +1,5 @@
+projectKey=PDFLayoutTextStripper
+serverUrl=http://localhost:9000
+dashboardUrl=http://localhost:9000/dashboard/index/PDFLayoutTextStripper
+ceTaskId=AVrtklDz__ZWxTfryd8-
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AVrtklDz__ZWxTfryd8-
