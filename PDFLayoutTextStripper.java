@@ -109,17 +109,6 @@ public class PDFLayoutTextStripper extends PDFTextStripper {
         Collections.sort(textList, comparator);
     }
     
-    private int computeAverageCharacterWidth(final List<TextPosition> textPositionList) {
-        if (textPositionList.isEmpty()) {
-            return 0;
-        } 
-        double averageWidth = 0.0;
-        for (TextPosition textPosition : textPositionList) {
-            averageWidth += textPosition.getWidthOfSpace();
-        }
-        return (int) Math.floor( averageWidth ) / textPositionList.size();
-    }
-    
     private void writeLine(final List<TextPosition> textPositionList) {
         if ( !textPositionList.isEmpty() ) {
             TextLine textLine = this.addNewLine();
@@ -365,7 +354,7 @@ class Character {
     @Override
     public String toString() {
         String toString = "";
-        toString += Integer.toString(index);
+        toString += index;
         toString += " ";
         toString += characterValue;
         toString += " isCharacterPartOfPreviousWord=" + isCharacterPartOfPreviousWord;

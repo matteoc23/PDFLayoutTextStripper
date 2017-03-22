@@ -11,7 +11,7 @@ public class test {
     public static void main(String[] args) {
         String string = null;
         try {
-        	try (FileInputStream input = new FileInputStream("samples/bus.pdf")){
+        	try (FileInputStream input = new FileInputStream("sample.pdf")){
 	        	PDFParser pdfParser = new PDFParser(input);
 	            pdfParser.parse(); 
 	            try (PDDocument pdDocument = new PDDocument(pdfParser.getDocument())){
@@ -19,10 +19,8 @@ public class test {
 	            	 string = pdfTextStripper.getText(pdDocument);
 	            }
             } 
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
-            e.printStackTrace();
+        	throw new RuntimeException(e);
         }
         System.out.println(string);
     }
